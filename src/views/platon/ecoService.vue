@@ -1,6 +1,17 @@
 <script>
 export default {
-  name: "ecoService"
+  name: "ecoService",
+  data(){
+    return{
+
+    }
+  },
+  mounted() {
+  console.log("this.$route", this.$route)
+    },
+  methods:{
+
+  },
 }
 </script>
 
