@@ -1,0 +1,32 @@
+:root{
+    --electric-blue : #4831D4;
+    --lime-green: #CCF381;
+
+    --yellow: #F9E795;
+    --coral: #F96167;
+
+    --white: #FFFFFF;
+    --baby-blue: #8AAAE5;
+
+    --moss-green: #97BC62FF;
+    --forest-green: #2C5F2D;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ol, ul{
+    list-style-type: none;
+}
+button, i{
+    cursor: pointer;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
