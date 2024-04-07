@@ -32,7 +32,7 @@ div[data-loginpassword] input {
   width: 100%;
 }
 
-div[data-loginpassword] svg {
+div[data-loginpassword] img {
   position: absolute;
   top: 50%;
   right: 15px;
@@ -43,9 +43,9 @@ div[data-loginpassword] svg {
 
 .login {
   padding-top: 110px;
-  padding-bottom: 90px;
+  padding-bottom: 10px;
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -30%);
 }
@@ -62,7 +62,7 @@ div[data-loginpassword] svg {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: 800px;
+  /*min-height: 800px;*/
 }
 .login_tab {
   position: absolute;
@@ -481,7 +481,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 
-.passwordCover svg {
+.passwordCover img {
   position: absolute;
   top: 50%;
   right: 20px;

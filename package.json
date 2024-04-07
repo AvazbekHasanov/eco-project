@@ -13,7 +13,8 @@
     "swiper": "^11.0.4",
     "vue": "^3.3.4",
     "vue-countup-v3": "^1.4.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.5.14"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",

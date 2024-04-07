@@ -14,33 +14,15 @@
             <div class="login_input-item">
               <label for="login">Login</label>
               <input v-model="login.login" type="text" name="login" id="login" @focus="removeError" autocomplete="off"
-                     autofocus @keydown="checkEnterPress" />
+                     autofocus @keydown="checkEnterPress"/>
             </div>
             <div class="login_input-item">
               <label for="login_password"> Parol </label>
               <div data-loginpassword="">
                 <input ref="loginPassword" v-model="login.password" type="password" name="password" id="login_password"
-                       @focus="removeError" @keydown="checkEnterPress" />
-                <svg v-show="!login.eye" @click="loginEyeChange" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M21.83 11.28C19.542 7.153 15.812 5 12 5c-3.812 0-7.542 2.152-9.83 6.28a1.376 1.376 0 0 0-.01 1.308C4.412 16.8 8.163 19 12 19c3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307ZM12 17c-2.939 0-5.96-1.628-7.908-5.051C6.069 8.596 9.073 7 12 7c2.927 0 5.931 1.596 7.908 4.949C17.96 15.372 14.94 17 12 17Z"
-                        fill="#000" />
-                </svg>
-                <svg v-show="login.eye" @click="loginEyeChange" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="m5.707 19.707 14-14a1 1 0 0 0-1.414-1.414l-14 14a1 1 0 1 0 1.414 1.414ZM12 5c1.201 0 2.394.214 3.536.635l-1.6 1.6A8.137 8.137 0 0 0 12 7c-2.927 0-5.931 1.596-7.908 4.949.654 1.15 1.43 2.097 2.282 2.848l-1.416 1.416c-1.071-.965-2.023-2.176-2.798-3.625a1.376 1.376 0 0 1 .01-1.307C4.458 7.15 8.188 5 12 5Z"
-                      fill="#000" />
-                  <path
-                      d="M12 9c.056 0 .112.002.167.005l-3.162 3.162A3 3 0 0 1 12 9ZM14.995 11.833l-3.162 3.162a3 3 0 0 0 3.162-3.162Z"
-                      fill="#000" />
-                  <path
-                      d="M12 17a8.047 8.047 0 0 1-1.935-.237L8.468 18.36c1.14.425 2.332.64 3.532.64 3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307c-.776-1.4-1.717-2.573-2.771-3.511l-1.417 1.416c.842.732 1.61 1.65 2.266 2.763C17.96 15.372 14.94 17 12 17Z"
-                      fill="#000" />
-                </svg>
+                       @focus="removeError" @keydown="checkEnterPress"/>
+                <img v-show="!login.eye" @click="loginEyeChange" src="../assets/images/eye.svg" alt="">
+                <img v-show="login.eye" @click="loginEyeChange" src="../assets/images/eye_remove.svg" alt="">
               </div>
             </div>
           </div>
@@ -63,135 +45,50 @@
               <label for="name">Ism</label>
               <input ref="inputname" v-model="validate.name" type="text" name="name" id="name"
                      @input="controlWrite($event)" @focus="checkErrorFullname($event)"
-                     :class="{ inputError: inputErrorState.name }" autofocus autocomplete="off" />
+                     :class="{ inputError: inputErrorState.name }" autofocus autocomplete="off"/>
             </div>
 
             <div class="login_input-item inputname" :data-state="inputErrorState.surname">
               <label for="surname">Familiya</label>
               <input ref="inputsurname" v-model="validate.surname" type="text" name="surname" id="surname"
                      @input="controlWrite($event)" @focus="checkErrorFullname($event)"
-                     :class="{ inputError: inputErrorState.surname }" autocomplete="off" />
+                     :class="{ inputError: inputErrorState.surname }" autocomplete="off"/>
             </div>
             <div class="login_input-item" :data-state="inputErrorState.date" @click="clearDateError">
               <label for="bday"> Tugilgan sana </label>
               <input v-model="validate.date" type="date" name="bday" id="bday" @input="dateCheck" @change="dateCheck"
-                     :class="{ inputError: inputErrorState.date }" autocomplete="off" />
+                     :class="{ inputError: inputErrorState.date }" autocomplete="off"/>
             </div>
             <!--                -->
             <div class="login_input-item" :data-state="inputErrorState.phone">
               <label for="phone">Telefon raqam</label>
               <input v-model="validate.phone" type="tel" name="phone" id="phone" @keydown="checkPress"
                      @input="phoneMasking" @focus="clearPhoneError" minLength="19"
-                     :class="{ inputError: inputErrorState.phone }" autocomplete="off" />
-            </div>
-            <div class="login_input-item" :data-state="inputErrorState.email">
-              <label for="email">Email</label>
-              <input v-model="validate.email" type="email" name="email" id="email" @keydown="checkPress"
-                     @focus="clearEmailError" :class="{ inputError: inputErrorState.email }" autocomplete="password" />
+                     :class="{ inputError: inputErrorState.phone }" autocomplete="off"/>
             </div>
 
             <div class="login_input-item" :data-state="inputErrorState.region" @click="clearRegionError">
-              <label for="region">Hudud</label>
-
-              <div class="customSelectwrapper" id="region">
-                <div class="customSelectContainer" :class="{ inputError: inputErrorState.region }">
-                  <p ref="customSelectChooseRegion" class="customSelectPlaceholder"
-                     v-show="!customSelect.selectListBlock.show">
-                    Hududni tanlang
-                  </p>
-                  <div class="customSelectContainerWrapper">
-                    <div class="selectListBlock" v-show="customSelect.selectListBlock.show">
-                      <div class="countrySearchBlock" v-show="customSelect.regionSearchState.show">
-                        <input v-model="countryNameForSort" type="text" ref="searchRegion" class="customSelect_search"
-                               :placeholder="countrySearchPlaceholder" />
-                        <!--                       <div role="button" class="countrySearchBlockCloseBtn" @click="closeMenuSearchMenu">x</div> -->
-                      </div>
-                      <ul class="customSelectList">
-                        <li v-for="region in regionsClone" :key="region.id" class="customSelectItem"
-                            @click="chooseRegion(region.id)">
-                          {{ region.country_name }}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!--                 <select v-model="validate.region" id="region" :class="{inputError: inputErrorState.region}">
-                	<option :value="region.id" v-for="region in regions" :key="region.id">{{ region.country_name }}</option>
-                </select> -->
+              <label for="region">Viloyat</label>
+              <CustomSelect  :dataArray="regionList"  @select-changed="regionChanges" :curValue="validate.region"></CustomSelect>
             </div>
-            <div class="login_input-item" :data-state="inputErrorState.gender" @click="clearGenderError">
-              <label for="gender">Jins</label>
-              <div class="customGenderSelectBlock" @click="chooseGender" :class="[
-                { classWhenGenderClicked: classWhenGenderClicked },
-                { inputError: inputErrorState.gender }
-              ]">
-                <p ref="genderName" v-show="chooseGenderState" class="genderChooseCustomPlaceholder">
-                  Jinsni tanlang
-                </p>
-                <ul class="genderList" v-show="!chooseGenderState">
-                  <li class="genderList-item" v-for="gender in genders" :key="gender.id"
-                      @click="choosingGenderItem(gender.id)">
-                    {{ gender.gender_name }}
-                  </li>
-                </ul>
-              </div>
-
-              <!--                 <select v-model="validate.gender" name="gender" id="gender" :class="{inputError: inputErrorState.gender}">
-                  <option :value="gender.id" v-for="gender in genders" :key="gender.id">{{ gender.gender_name }}</option>
-                </select> -->
+            <div class="login_input-item" :data-state="inputErrorState.region" @click="clearRegionError">
+              <label for="region">Viloyat</label>
+              <CustomSelect  :dataArray="districtList"   :curValue="validate.district_id"></CustomSelect>
             </div>
-            <!-- <div
-              class="login_input-item pnfl"
-              :data-state="inputErrorState.pnfl"
-              :data-info="pnflInfo"
-            >
-              <label for="pnfl"> JShShIR elektron raqamli imzo orqali kirish uchun </label>
-              <input
-                v-model="validate.pnfl"
-                type="text"
-                name="pnfl"
-                id="pnfl"
-                @input="controlWritePNFL"
-                @focus="checkErrorPNFL"
-                :class="{ inputError: inputErrorState.pnfl }"
-                :disabled="!compPnflShow"
-                autocomplete="off"
-              />
-            </div> -->
 
             <div class="login_input-item" :data-state="inputErrorState.login">
               <label for="reg_login">Login</label>
               <input v-model="validate.login" type="text" name="reg_login" id="reg_login" @input="controlWriteLogin"
-                     @focus="clearLoginError" :class="{ inputError: inputErrorState.login }" autocomplete="off" />
+                     @focus="clearLoginError" :class="{ inputError: inputErrorState.login }" autocomplete="off"/>
             </div>
             <div class="login_input-item" :data-state="inputErrorState.password">
               <label for="reg_password">Parol</label>
               <span class="passwordCover">
                 <input v-model="validate.password" :type="passwordControl" name="reg_password" id="reg_password"
                        @input="controlWritePassword" @focus="clearPasswordError"
-                       :class="{ inputError: inputErrorState.password }" autocomplete="off" />
-                <svg v-show="passwordEyeControl" @click="changePasswordInput" width="20" height="20" viewBox="0 0 24 24"
-                     fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M21.83 11.28C19.542 7.153 15.812 5 12 5c-3.812 0-7.542 2.152-9.83 6.28a1.376 1.376 0 0 0-.01 1.308C4.412 16.8 8.163 19 12 19c3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307ZM12 17c-2.939 0-5.96-1.628-7.908-5.051C6.069 8.596 9.073 7 12 7c2.927 0 5.931 1.596 7.908 4.949C17.96 15.372 14.94 17 12 17Z"
-                        fill="#000" />
-                </svg>
-                <svg v-show="!passwordEyeControl" @click="changePasswordInput" width="20" height="20" viewBox="0 0 24 24"
-                     fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="m5.707 19.707 14-14a1 1 0 0 0-1.414-1.414l-14 14a1 1 0 1 0 1.414 1.414ZM12 5c1.201 0 2.394.214 3.536.635l-1.6 1.6A8.137 8.137 0 0 0 12 7c-2.927 0-5.931 1.596-7.908 4.949.654 1.15 1.43 2.097 2.282 2.848l-1.416 1.416c-1.071-.965-2.023-2.176-2.798-3.625a1.376 1.376 0 0 1 .01-1.307C4.458 7.15 8.188 5 12 5Z"
-                      fill="#000" />
-                  <path
-                      d="M12 9c.056 0 .112.002.167.005l-3.162 3.162A3 3 0 0 1 12 9ZM14.995 11.833l-3.162 3.162a3 3 0 0 0 3.162-3.162Z"
-                      fill="#000" />
-                  <path
-                      d="M12 17a8.047 8.047 0 0 1-1.935-.237L8.468 18.36c1.14.425 2.332.64 3.532.64 3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307c-.776-1.4-1.717-2.573-2.771-3.511l-1.417 1.416c.842.732 1.61 1.65 2.266 2.763C17.96 15.372 14.94 17 12 17Z"
-                      fill="#000" />
-                </svg>
+                       :class="{ inputError: inputErrorState.password }" autocomplete="off"/>
+                <img v-show="passwordEyeControl" @click="changePasswordInput" src="../assets/images/eye.svg">
+                <img v-show="!passwordEyeControl" @click="changePasswordInput" src="../assets/images/eye_remove.svg">
               </span>
             </div>
             <div class="login_input-item repeat-password" :data-state="inputErrorState.repeatPassword">
@@ -199,44 +96,23 @@
               <span class="passwordCover">
                 <input v-model="validate.repeatPassword" :type="repeatControl" name="reg_new_password"
                        id="reg_new_password" @focus="clearRepeatPasswordError" @input="controlWriteRepeat"
-                       :class="{ inputError: inputErrorState.repeatPassword }" autocomplete="off" />
-                <svg v-show="repeatEyeControl" @click="changeRepeatPasswordInput" width="20" height="20"
-                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" fill="#000" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M21.83 11.28C19.542 7.153 15.812 5 12 5c-3.812 0-7.542 2.152-9.83 6.28a1.376 1.376 0 0 0-.01 1.308C4.412 16.8 8.163 19 12 19c3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307ZM12 17c-2.939 0-5.96-1.628-7.908-5.051C6.069 8.596 9.073 7 12 7c2.927 0 5.931 1.596 7.908 4.949C17.96 15.372 14.94 17 12 17Z"
-                        fill="#000" />
-                </svg>
-                <svg v-show="!repeatEyeControl" @click="changeRepeatPasswordInput" width="20" height="20"
-                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="m5.707 19.707 14-14a1 1 0 0 0-1.414-1.414l-14 14a1 1 0 1 0 1.414 1.414ZM12 5c1.201 0 2.394.214 3.536.635l-1.6 1.6A8.137 8.137 0 0 0 12 7c-2.927 0-5.931 1.596-7.908 4.949.654 1.15 1.43 2.097 2.282 2.848l-1.416 1.416c-1.071-.965-2.023-2.176-2.798-3.625a1.376 1.376 0 0 1 .01-1.307C4.458 7.15 8.188 5 12 5Z"
-                      fill="#000" />
-                  <path
-                      d="M12 9c.056 0 .112.002.167.005l-3.162 3.162A3 3 0 0 1 12 9ZM14.995 11.833l-3.162 3.162a3 3 0 0 0 3.162-3.162Z"
-                      fill="#000" />
-                  <path
-                      d="M12 17a8.047 8.047 0 0 1-1.935-.237L8.468 18.36c1.14.425 2.332.64 3.532.64 3.837 0 7.588-2.199 9.84-6.412a1.376 1.376 0 0 0-.01-1.307c-.776-1.4-1.717-2.573-2.771-3.511l-1.417 1.416c.842.732 1.61 1.65 2.266 2.763C17.96 15.372 14.94 17 12 17Z"
-                      fill="#000" />
-                </svg>
+                       :class="{ inputError: inputErrorState.repeatPassword }" autocomplete="off"/>
+                <img v-show="repeatEyeControl" @click="changeRepeatPasswordInput" src="../assets/images/eye.svg" alt="">
+                <img v-show="!repeatEyeControl" @click="changeRepeatPasswordInput" src="../assets/images/eye_remove.svg"
+                     alt="">
               </span>
             </div>
             <div class="login_input-item imageupload" :data-state="inputErrorState.file">
               <label>Rasmni yuklang</label>
               <div class="upload-frame mobile" ref="uploadFrame">
-                <img :src="fileUrlImg" alt="" />
+                <img :src="fileUrlImg" alt=""/>
                 <label v-show="uploadFileState" for="reg_img" class="filupload_label">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
-                    <path fill="#448FFF" fill-rule="evenodd"
-                          d="m15.567 7.634 1.663 1.637-7.371 7.485a.975.975 0 0 0 0 1.363.902.902 0 0 0 1.284-.002l8.11-8.238a3.116 3.116 0 0 0 0-4.357c-1.13-1.153-3.128-1.127-4.235.002L6.166 14.51a5.256 5.256 0 0 0 0 7.35c1.94 1.98 5.274 1.948 7.185-.001l10.323-10.485 1.663 1.637-10.322 10.483c-2.816 2.873-7.653 2.92-10.515 0a7.59 7.59 0 0 1 .002-10.62l8.852-8.986c2.01-2.05 5.512-2.096 7.566 0a5.45 5.45 0 0 1-.002 7.626l-8.105 8.233a3.233 3.233 0 0 1-4.621.005 3.31 3.31 0 0 1 .002-4.63l7.373-7.488Z"
-                          clip-rule="evenodd" />
-                  </svg>
+                  <img src="../assets/images/file.svg" style="width: 24px">
                   <span class="fileuploadtxt">
                     JPEG, JPG, PNG formatda 5 mb dan ortiq bolmagan rasm
                   </span>
                   <input ref="fileupload" type="file" accept=".png, .jpg, .jpeg" @change="validateCheckSize($event)"
-                         id="reg_img" :class="{ inputError: inputErrorState.file }" />
+                         id="reg_img" :class="{ inputError: inputErrorState.file }"/>
                 </label>
               </div>
             </div>
@@ -247,15 +123,18 @@
       </div>
     </div>
     <div class="backg_animation">
-      <img class="backg_image" src="https://expert.uz/media/store/new_images/back_circle.svg" alt="" />
+      <img class="backg_image" src="../assets/images/back_circle.svg" alt=""/>
     </div>
   </section>
 </template>
 
 <script>
 import {jsx} from "vue/jsx-runtime";
+import CustomSelect from "@/components/CustomSelect.vue";
+import {th} from "vuetify/locale";
 
 export default {
+  components: {CustomSelect},
   scripts: [],
   data() {
     return {
@@ -267,6 +146,7 @@ export default {
         downloadDocument: '',
         downloadWord: ''
       },
+      regionList: [],
       pdfDownloaded: false,
       offerModal: false,
       offerReaded: false,
@@ -283,6 +163,7 @@ export default {
       googleSignInParams: {
         clientId: '585287172500-uq9kqfj5iiusqoa0c394lb041s2knsvd.apps.googleusercontent.com'
       },
+      reginInfo: {},
       chooseGenderState: true,
       classWhenGenderClicked: false,
       customSelect: {
@@ -308,13 +189,12 @@ export default {
         file: ''
       },
       regions: [],
+      districtList: [],
       regionsClone: [],
       genders: [],
       fileUploadStart: false,
       showErrorUploadState: false,
       uploadFileState: true,
-      pnflShow: false,
-      pnflInfo: '',
       passwordEyeControl: false,
       passwordControl: 'password',
       repeatEyeControl: false,
@@ -333,12 +213,13 @@ export default {
         surname: '',
         date: '',
         phone: '+998',
-        region: '',
+        region: 3,
         regionName: '',
         gender: '',
         pnfl: '',
         login: '',
         password: '',
+        district_id: '',
         repeatPassword: '',
         fileCheck: false,
         file: null,
@@ -356,8 +237,9 @@ export default {
     validate: {
       deep: true,
       handler(newValue, oldValue) {
+        console.log(newValue.region)
         let accessCountry = [139]
-        let { name, surname, date, phone, region, gender, pnfl, login, password, repeatPassword } =
+        let {name, surname, date, phone, region, gender, pnfl, login, password, repeatPassword} =
             newValue
         let regionName = this.regions.find((element) => element.id === region)?.country_name
 
@@ -373,9 +255,6 @@ export default {
               '+$1 ($2) $3-$4-$5'
           )
         }
-        // else{
-        //   this.validate.phone = this.validate.phone.replace(/[^\d\+]/, '');
-        // }
       }
     },
     countdown: {
@@ -390,8 +269,6 @@ export default {
       handler(newValue, oldValue) {
         let lengthx = newValue.length
         let caseChange = newValue ? `${newValue.charAt(0).toUpperCase()}${newValue.slice(1)}` : ''
-        // this.countryNameForSort = this.countryNameForSort.replace(/[қ]/gi, this.replacer);
-
         if (this.countryNameForSort) {
           this.regionsClone = [...this.regions].filter(
               (item) => item.country_name.slice(0, lengthx) == caseChange
@@ -403,68 +280,28 @@ export default {
     }
   },
   computed: {
-    compPnflShow() {
-      let accessCountry = [139]
-
-      return accessCountry.includes(this.validate.region)
-    }
   },
 
   methods: {
-    async checkPhone() {
-      return await this.$api.get(
-          `public/check/phone?phone=${this.validate.phone.replaceAll(/[^\d]/g, '')}`,
-          (response) => {
-            let {
-              data: { data }
-            } = response
-
-            return data
-          }
-      )
+    regionChanges(ob){
+      this.validate.region = ob.id;
+      if(this.validate.region){
+        fetch(`http://localhost:3000/districts?region_id=${this.validate.region}`).then(res => res.json()).then(res => {
+          this.districtList = res.district_list;
+        })
+      }
+    },
+    getData(){
+      fetch('http://localhost:3000/regions').then(res => res.json()).then(res => {
+        console.log("res", res.region_list)
+        this.regionList = res.region_list;
+      })
     },
 
     checkEnterPress(event) {
       if (event.key == 'Enter') {
         this.tryToLogin()
       }
-    },
-    showSuccessToast() {
-      this.pdfDownloaded = true
-      // this.$platonApp.greenToast(this.$l('EXPERTOFFERSUCCESSDOWNLOAD', "Oferta muvaffqiyatli yuklandi"));
-    },
-
-    checkOfferInput() {
-      let context = this
-
-      setTimeout(() => {
-        if (context.currentDocumentType == 'offer') {
-          context.$refs.customoffercheckbox.checked = true
-        }
-
-        if (context.currentDocumentType == 'agreement') {
-          context.$refs.customagreementcheckbox.checked = true
-        }
-      }, 250)
-    },
-    setDocumentData(documentType) {
-      this.currentDocumentType = documentType
-
-      if (documentType == 'offer') {
-        this.documentData.name = 'Oferta'
-        this.documentData.href = '/v1/store/file/docs/oferta.pdf'
-        this.documentData.downloadDocument = 'oferta.pdf'
-        this.documentData.downloadWord = 'Ofertani yuklab olish'
-      }
-
-      if (documentType == 'agreement') {
-        this.documentData.name = 'Shartnoma'
-        this.documentData.href = '/v1/store/file/docs/soglashenie.pdf'
-        this.documentData.downloadDocument = 'soglashenie.pdf'
-        this.documentData.downloadWord = 'Shartnomani yuklab olish'
-      }
-
-      console.log(this.documentData, this.currentDocumentType)
     },
     loginEyeChange() {
       this.login.eye = !this.login.eye
@@ -478,88 +315,29 @@ export default {
       }
     },
 
-    onError() {
-      console.log('Error')
-      this.states.loginError = true
-    },
-
-    async xxx(username, password) {
-      try {
-        this.isLoggingIn = true
-        const response = await this.$http.post(
-            window.configs.PLATON_LOGIN_URL,
-            {
-              username,
-              password
-            },
-            {
-              baseURL: `${window.configs.PLATON_SERVER_URL}/${window.configs.PLATON_SERVER_PREFIX}`
-            }
-        )
-
-        this.isLoggingIn = false
-
-        response.config.baseURL = 'https://api.expert.uz/pages/certification'
-        // console.log(response);
-        // return;
-
-        this.$emit('login-success', {
-          user: response.data.user,
-          token: response.data.token,
-          parcel: { username, password, response, type: 'login-password' }
-        })
-
-        // window.location.assign('/pages/certification');
-      } catch (e) {
-        this.isLoggingIn = false
-        const response = e.response
-
-        if (response)
-          if (response.status === 401) {
-            this.$emit('login-error', 'Логин ёки пароль нотугри!')
-          } else {
-            this.$emit('login-error', response.error ? response.error.message : 'Хатолик')
-          }
-      }
-    },
 
     tryToLogin() {
-      let requestOptions = {
-        method: 'POST',
-        body: JSON.stringify({username: this.login.login, password: this.login.password})
-      }
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-      fetch(
-          `http://localhost:3000/login`,
-          requestOptions
-      )
-          .then((response) => response.json())
+      const raw = JSON.stringify({username: this.login.login, password: this.login.password});
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+      };
+
+      fetch("http://localhost:3000/login", requestOptions)
+          .then((response) => response.text())
           .then((result) => {
-              console.log('result', result)
-              localStorage.setItem('auth_users', JSON.stringify(result.user_info))
-              // history.pushState({}, '', `dashboard`)
-              // window.location.reload()
+            result = JSON.parse(result);
+            if (result.user_info && result.user_info.username) {
+              window.location.replace('http://localhost:5173')
+            }
           })
-          .catch((error) => console.log('error', error))
-    },
-    onSignInSuccess(googleUser) {
-      let profile = googleUser.getBasicProfile()
-      console.log(profile)
-    },
-    onSignInError(error) {
-      // this.$platonApp.errorToast('Oh no')
-      console.log(error)
-    },
-    backWhenRemove(index) {
-      let btnName = event.code
-      let verCodeSpans = Array.from(document.querySelectorAll('.smsnumberpart'))
-
-      if (btnName == 'Backspace' && index >= 0) {
-        verCodeSpans[index].innerText = ''
-        if (index > 0) {
-          verCodeSpans[index - 1].focus()
-        }
-      }
+          .catch((error) => console.error(error));
     },
     chooseGender() {
       event.stopImmediatePropagation()
@@ -575,14 +353,6 @@ export default {
 
       this.inputErrorState.gender = ''
     },
-    closeMenuSearchMenu() {
-      event.stopPropagation()
-      this.classWhenGenderClicked = false
-      this.customSelect.selectListBlock.show = false
-      this.countryNameForSort = ''
-    },
-
-    checkPress() { },
     chooseRegion(id) {
       event.stopPropagation()
       let choosenRegion = this.regions.find((item) => item.id == id)
@@ -593,80 +363,6 @@ export default {
       this.$refs.customSelectChooseRegion.innerText = choosenRegion.country_name
       this.countryNameForSort = ''
     },
-    replacer(match) { },
-    resendMSG() {
-      let id = this.currentUserID
-
-      if (this.verificationMsg) {
-        this.verificationMsg = ''
-      }
-
-      if (this.countdown == '00:00') {
-        let allInputNumbers = Array.from(document.querySelectorAll('.smsnumberpart'))
-
-        for (let x = 0; x < allInputNumbers.length; x++) {
-          allInputNumbers[x].innerText = ''
-        }
-
-        allInputNumbers[0].focus()
-
-        this.$api
-            .post(`public/send_massage`, { id: id })
-            .then((res) => {
-              let {
-                data: { timestamp }
-              } = res
-              let {
-                data: { data }
-              } = res
-
-              this.startSMSCountdown()
-            })
-            .then(() => {
-              this.viewSMSWindow()
-            })
-      } else {
-        this.verificationMsg = "Iltimos, berilgan vaqt tugagandan so'ng urunib ko'ring"
-        let context = this
-
-        setTimeout(() => {
-          context.verificationMsg = ''
-        }, 3000)
-      }
-    },
-    startSMSCountdown() {
-      let currentStandart = this.smsStandartTimeAsMinute
-      let currentStandartToSecond = currentStandart * 60
-      let takeMinute = Math.floor(currentStandartToSecond / 60)
-      let takeSeconds = currentStandartToSecond - takeMinute * 60
-
-      takeMinute = takeMinute < 10 ? `0${takeMinute}` : takeMinute
-      takeSeconds = takeSeconds < 10 ? `0${takeSeconds}` : takeSeconds
-
-      let timeToString = `${takeMinute}:${takeSeconds}`
-      this.countdown = timeToString
-
-      let context = this
-
-      let start = setTimeout(function cb() {
-        --currentStandartToSecond
-
-        if (currentStandartToSecond >= 0) {
-          let takeMinute = Math.floor(currentStandartToSecond / 60)
-          let takeSeconds = currentStandartToSecond - takeMinute * 60
-
-          takeMinute = takeMinute < 10 ? `0${takeMinute}` : takeMinute
-          takeSeconds = takeSeconds < 10 ? `0${takeSeconds}` : takeSeconds
-
-          let timeToString = `${takeMinute}:${takeSeconds}`
-          context.countdown = timeToString
-
-          setTimeout(cb, 1000)
-        } else {
-          clearInterval(start)
-        }
-      }, 1000)
-    },
     changeRepeatPasswordInput() {
       this.repeatControl = this.repeatControl == 'password' ? 'text' : 'password'
       this.repeatEyeControl = !this.repeatEyeControl
@@ -676,42 +372,6 @@ export default {
       this.passwordControl = this.passwordControl == 'password' ? 'text' : 'password'
       this.passwordEyeControl = !this.passwordEyeControl
     },
-    viewUploadFile() {
-      this.modal = true
-      let body = document.documentElement.querySelector('body')
-      body.classList.add('no-scroll')
-    },
-    removeViewUploadFile() {
-      this.modal = false
-      let body = document.documentElement.querySelector('body')
-      body.classList.remove('no-scroll')
-    },
-    viewSMSWindow() {
-      this.smsmodal = true
-      let body = document.documentElement.querySelector('body')
-
-      body.classList.add('no-scroll')
-
-      this.$nextTick(() => {
-        document.querySelector('.verificationBlock').firstChild.focus()
-      })
-    },
-    removeSMSWindow() {
-      this.smsmodal = false
-      let body = document.documentElement.querySelector('body')
-      body.classList.remove('no-scroll')
-    },
-    removeUploadFile() {
-      this.fileUploadStart = false
-      this.uploadFileState = true
-
-      let file = this.$refs.fileupload
-      let uploadFrame = this.$refs.uploadFrame.classList.add('upload-frame')
-
-      file.value = ''
-      this.validate.fileCheck = false
-    },
-
     async validation() {
       let validationState = [
         this.validateName(),
@@ -720,7 +380,6 @@ export default {
         this.validatePhone(),
         this.validateRegion(),
         this.validateGender(),
-        this.validatePNFL(),
         this.validateLogin(),
         this.validatePassword(),
         this.validateRepeatPassword(),
@@ -729,22 +388,8 @@ export default {
         this.agreementReaded,
         this.validateEmail()
       ].every((item) => item === true)
-
-      // let {
-      //   data: { data: phoneCheck }
-      // } = await this.checkPhone()
-
-      // console.log(phoneCheck, 'phonecheck')
-
-      // if (phoneCheck) {
-      //   this.validate.phone = '+998'
-      //   return
-      // }
       console.log(validationState)
       this.sendData()
-      // if (!phoneCheck && validationState) {
-      //   this.sendData()
-      // }
     },
     phoneMasking() {
       let clearNumber = this.validate.phone.split('+998')[1].replace(/[^\d]/g, '')
@@ -914,9 +559,6 @@ export default {
 
       // this.countrySearchPlaceholder = '';
 
-      this.$nextTick(() => {
-        this.$refs.searchRegion.focus()
-      })
     },
     clearGenderError() {
       if (this.inputErrorState.gender) {
@@ -961,13 +603,6 @@ export default {
           ''
       )
     },
-    controlWritePNFL() {
-      this.validate.pnfl = this.validate.pnfl.replace(/[^\d]/g, '')
-
-      if (this.validate.pnfl > 14) {
-        this.validate.pnfl = this.validate.pnfl.slice(0, 14)
-      }
-    },
     controlWriteLogin() {
       let login = this.validate.login
       this.validate.login = login.replace(/[^\w]/gi, '')
@@ -986,61 +621,6 @@ export default {
       }
       if (targetID == 'surname') {
         this.validate.surname = targetValue
-      }
-    },
-    controlWriteVerCode(index) {
-      let allInputNumbers = Array.from(document.querySelectorAll('.smsnumberpart'))
-      let eventValue = event.target.innerText
-      event.target.innerText = eventValue[0].replace(/[^\d]/g, '')
-
-      if (index != allInputNumbers.length - 1 && event.target.innerText) {
-        allInputNumbers[index + 1].focus()
-      }
-
-      let allValues = allInputNumbers.map((element) => element.innerText)
-      let checkAllValues = allValues.every((element) => !!element == true)
-      let allValuesToString = allValues.join('')
-
-      if (checkAllValues) {
-        if (this.countdown != '00:00') {
-          this.$api
-              .post(`public/registration/chack/code`, {
-                id: this.currentUserID,
-                code: allValuesToString
-              })
-              .then((res) => {
-                let {
-                  data: { data }
-                } = res
-                let { refresh, check } = data
-
-                if (refresh === 'success' && check === 1) {
-                  if (!window.q('referral') && window.q('direction_id') && window.q('course_id')) {
-                    window.location.assign(
-                        `/pages/${window.q('ref_next_page')}?directionid=${window.q(
-                            'direction_id'
-                        )}&courseid=${window.q('course_id')}`
-                    )
-                    return
-                  } else if (
-                      window.q('referral') &&
-                      window.q('direction_id') &&
-                      window.q('course_id')
-                  ) {
-                    window.location.assign(
-                        `/pages/${window.q('ref_next_page')}?directionid=${window.q(
-                            'direction_id'
-                        )}&courseid=${window.q('course_id')}&referal=true`
-                    )
-                  } else {
-                    this.tryLogin(this.validate.login, this.validate.repeatPassword)
-                  }
-                } else {
-                  this.verificationMsg =
-                      "Verifikatsiya uchun berilgan vaqt tugadi. Iltimos, qaytadan urunib ko'ring"
-                }
-              })
-        }
       }
     },
     checkErrorFullname(event) {
@@ -1067,17 +647,6 @@ export default {
           }
         })
       }
-    },
-    checkErrorPNFL() {
-      this.inputErrorState.pnfl = ''
-
-      event.target.addEventListener('focusout', (event) => {
-        if (this.validate.pnfl) {
-          if (this.validate.pnfl.length < 14) {
-            this.inputErrorState.pnfl = `JShShIR 14 ta raqamdan iborat bo'lishi kerak`
-          }
-        }
-      })
     },
     validateName() {
       if (!this.validate.name.length) {
@@ -1260,23 +829,6 @@ export default {
 
       imageGet.readAsDataURL(file)
     },
-
-    imageUploadAnimate() {
-      this.uploadFileState = false
-      this.fileUploadStart = true
-
-      const elementForAnimate = document.querySelector('.uploadingFileOverlay')
-      this.getUploadingImage(elementForAnimate)
-    },
-    showErrorUpload() {
-      this.showErrorUploadState = true
-      this.uploadFileState = false
-
-      setTimeout(() => {
-        this.showErrorUploadState = false
-        this.uploadFileState = true
-      }, 3000)
-    },
     async validateCheckSize(event) {
       let file = event.target.files[0]
       if (file) {
@@ -1334,28 +886,7 @@ export default {
     }
   },
   mounted() {
-    console.log("this.$user", this.$user)
-    // this.initGoogleLogin(this.$refs.google)
-    fetch('https://api.expert.uz/api/public/country/and/gender/list')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok')
-          }
-          return response.json()
-        })
-        .then((data) => {
-          const { country, gender } = data.data
-          this.genders = gender
-          let sortedArr = country
-              .filter((country) => country.country_name !== 'Бошка')
-              .sort((el1, el2) => el1.country_name.localeCompare(el2.country_name))
-          this.regions = [...sortedArr]
-          this.regionsClone = [...sortedArr]
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error)
-        })
-
+    this.getData();
     let body = document.body
 
     body.addEventListener('click', (event) => {

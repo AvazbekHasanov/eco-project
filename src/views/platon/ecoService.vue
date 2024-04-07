@@ -1,16 +1,24 @@
 <script>
 export default {
   name: "ecoService",
-  data(){
-    return{
-
+  data() {
+    return {
+      serviceInfo: {}
     }
   },
   mounted() {
-  console.log("this.$route", this.$route.query)
+    console.log("this.$route", this.$route.query);
+    this.getInfoAboutService()
+  },
+  methods: {
+    getInfoAboutService(){
+      if (this.$route.query.id) {
+        fetch(`http://localhost:3000/get_service?id=${this.$route.query.id}`).then(res => res.json()).then(res => {
+          this.serviceInfo = res.service_info;
+          console.log("this.serviceInfo", this.serviceInfo)
+        })
+      }
     },
-  methods:{
-
   },
 }
 </script>
