@@ -328,6 +328,10 @@ export default {
         body: raw,
         redirect: "follow"
       };
+      const router = new VueRouter({
+        mode: 'history',
+        routes
+      })
 
       fetch("http://localhost:3000/login", requestOptions)
           .then((response) => response.text())
