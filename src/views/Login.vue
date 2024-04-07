@@ -334,7 +334,7 @@ export default {
           .then((result) => {
             result = JSON.parse(result);
             if (result.user_info && result.user_info.username) {
-              window.location.replace('http://localhost:5173')
+              router.push('/')
             }
           })
           .catch((error) => console.error(error));
