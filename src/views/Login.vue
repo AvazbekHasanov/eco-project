@@ -286,13 +286,13 @@ export default {
     regionChanges(ob){
       this.validate.region = ob.id;
       if(this.validate.region){
-        fetch(`http://localhost:3000/districts?region_id=${this.validate.region}`).then(res => res.json()).then(res => {
+        fetch(`${this.$host}/districts?region_id=${this.validate.region}`).then(res => res.json()).then(res => {
           this.districtList = res.district_list;
         })
       }
     },
     getData(){
-      fetch('http://localhost:3000/regions').then(res => res.json()).then(res => {
+      fetch(`${this.$host}/regions`).then(res => res.json()).then(res => {
         console.log("res", res.region_list)
         this.regionList = res.region_list;
       })
@@ -328,8 +328,11 @@ export default {
         body: raw,
         redirect: "follow"
       };
-
-      fetch("http://localhost:3000/login", requestOptions)
+      let instance = this.$toast.open('You did it!');
+      // console.log("instance", instance)
+      // instance.dismiss();
+      // this.$toast.clear();
+      fetch(`${this.$host}/login`, requestOptions)
           .then((response) => response.text())
           .then((result) => {
             result = JSON.parse(result);
@@ -337,7 +340,9 @@ export default {
               window.location.href = '/';
             }
           })
-          .catch((error) => console.error(error));
+          .catch((error) => {
+            console.error(error);
+          });
     },
     chooseGender() {
       event.stopImmediatePropagation()
@@ -874,7 +879,7 @@ export default {
 
       console.log('Request size:', requestSizeInBytes, 'bytes');
 
-      fetch('http://localhost:3000/register', requestOptions)
+      fetch(`${this.$host}/register`, requestOptions)
           .then((response) => response.json())
           .then((result) => {
             console.log('result', result, typeof result)

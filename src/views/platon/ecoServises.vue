@@ -67,7 +67,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:3000/all_services').then(res => res.json()).then(res => {
+    fetch(`${this.$host}/all_services`).then(res => res.json()).then(res => {
       this.services = res.services;
       console.log("res", this.services[1]);
     })
