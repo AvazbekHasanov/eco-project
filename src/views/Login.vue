@@ -328,15 +328,12 @@ export default {
         body: raw,
         redirect: "follow"
       };
-      let instance = this.$toast.open('You did it!');
-      // console.log("instance", instance)
-      // instance.dismiss();
-      // this.$toast.clear();
       fetch(`${this.$host}/login`, requestOptions)
           .then((response) => response.text())
           .then((result) => {
             result = JSON.parse(result);
             if (result.user_info && result.user_info.username) {
+              localStorage.setItem('auth_users', JSON.stringify(result.user_info))
               window.location.href = '/';
             }
           })
@@ -884,13 +881,14 @@ export default {
           .then((result) => {
             console.log('result', result, typeof result)
             localStorage.setItem('auth_users', JSON.stringify(result.user_info))
-            history.pushState({}, '', `dashboard`)
-            window.location.reload()
+            history.pushState({}, '', `/`)
+            // window.location.reload()
           })
           .catch((error) => console.log('error', error))
     }
   },
   mounted() {
+    console.log("this.route.query", this.$route.query)
     this.getData();
     let body = document.body
 

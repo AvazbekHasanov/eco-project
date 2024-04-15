@@ -49,4 +49,25 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  console.log("Navigating to:", to.fullPath);
+
+  if (to.name !== 'service') {
+    next();
+  } else {
+    const isAuthenticated = localStorage.getItem('auth_users');
+    if (!isAuthenticated) {
+      next({
+        name: 'Login',
+        query: { next: encodeURIComponent(to.fullPath) }
+      });
+    } else {
+      next();
+    }
+  }
+});
+
+
+
+
 export default router
