@@ -350,7 +350,7 @@ export default {
 .wrapper-eco nav .location::before {
   content: '';
   position: absolute;
-  top: -40px;
+  top: -5px;
   width: 100%;
   padding: 20px;
   background-color: white;

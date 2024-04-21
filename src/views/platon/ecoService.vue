@@ -1,6 +1,7 @@
 <script>
 import Modal from "@/components/modal.vue";
 import Payment from "@/components/Payment.vue";
+import {th} from "vuetify/locale";
 
 export default {
   name: "ecoService",
@@ -10,25 +11,59 @@ export default {
       serviceInfo: {
         price: 12
       },
-      countPeople: 0,
-      showModal: false
+      countPeople: '',
+      showModal: false,
+      countMonth: '',
+      haveActiveService: false
     }
   },
   mounted() {
-    console.log("this.$route", this.$route.query);
+    // console.log("this.$route", this.$route.query);
     this.getInfoAboutService()
   },
   computed:{
     allSum(){
-      return this.serviceInfo.price*this.countPeople;
+      return (this.serviceInfo.price*this.countPeople*this.countMonth).toFixed(2);
     },
   },
   methods: {
+    checkValid(){
+      if(this.countMonth > 12){
+        this.countMonth = 12
+      }else if (this.countMonth < 0){
+        this.countMonth = 0;
+      }
+    },
+    buyService(){
+      let myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/json')
+
+      let raw = JSON.stringify({ user_id: parseInt(this.$user.id), day: this.countMonth*30 , service_id: this.serviceInfo.id})
+
+      let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      }
+      fetch(`${this.$host}/connect_service`, requestOptions)
+          .then(res => res.json())
+          .then(res => {
+            console.log("Response:", res);
+            this.showModal = false;
+            window.location.reload();
+          })
+          .catch(error => {
+            // Handle any errors
+            console.error("Error:", error);
+          });
+    },
     getInfoAboutService() {
       console.log("this.$host", this.$host)
       if (this.$route.query.id) {
-        fetch(`${this.$host}/get_service?id=${this.$route.query.id}`).then(res => res.json()).then(res => {
+        fetch(`${this.$host}/get_service?id=${this.$route.query.id}&user_id=${this.$user.id??null}`).then(res => res.json()).then(res => {
           this.serviceInfo = res.service_info;
+          this.haveActiveService = res.have_old_services
           console.log("this.serviceInfo", this.serviceInfo)
         })
       }
@@ -70,13 +105,20 @@ export default {
             <span >
              <label for="count" style="margin-right: 20px"> Odam soni: </label>
               <input style="text-align: center" type="number" id="count"  step="1"  v-model="countPeople" />
+            </span><br> <br>
+            <span >
+             <label for="count" style="margin-right: 20px"> Nechi oy: </label>
+              <input style="text-align: center" type="number" id="count"  step="1" :max="12"  v-model="countMonth" @input="checkValid"/>
             </span>
           </p>
           <p>
             <span> Umumiy qiymat:  </span> <span> {{allSum}} so'm</span>
           </p>
+          <p v-if="haveActiveService" style="color: red">
+            Sizda active ta'rif mavjud!
+          </p>
         </div>
-        <button type="button" class="btn btn-success" @click="openModal"> Xizmatga ulanish </button>
+        <button type="button" class="btn btn-success" :disabled="!countMonth || !countPeople || haveActiveService" @click="openModal"> Xizmatga ulanish </button>
       </div>
     </div>
     <div class="media-container" style="width: 50%">
@@ -84,7 +126,7 @@ export default {
     </div>
   </div>
   <modal v-if="showModal" @close="closeModal" >
-    <Payment></Payment>
+    <Payment @payment="buyService"></Payment>
   </modal>
 
 

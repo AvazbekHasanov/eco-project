@@ -18,5 +18,6 @@ const user = storedUser && storedUser != 'undefined' ? JSON.parse(storedUser) : 
 
 app.config.globalProperties.$user = user;
 app.config.globalProperties.$host = 'https://eco-backend-84gl.onrender.com'
+// app.config.globalProperties.$host = 'http://localhost:3000'
 
 app.mount('#app')

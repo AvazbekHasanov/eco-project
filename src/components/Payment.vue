@@ -58,6 +58,9 @@ export default {
     }
   },
   methods: {
+    payment(){
+      this.$emit('payment', true)
+    },
     flipCard (status) {
       this.isCardFlipped = status;
     },
@@ -253,7 +256,7 @@ export default {
         </div>
       </div>
 
-      <button class="card-form__button" style="background: #0f5132 !important;">
+      <button class="card-form__button" style="background: #0f5132 !important;" @click="payment">
         Submit
       </button>
     </div>
