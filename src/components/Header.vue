@@ -79,8 +79,8 @@ export default {
         <img src="../assets/images/eco_logo.svg" alt="logo">
       </div>
       <div class="text">
-        <h2>Davlat Ekologik</h2>
-        <p>Xizmat ko'rsatish makazi</p>
+        <h2>MaxsusTrans xizmatlari</h2>
+        <p>Xizmat ko'rsatish</p>
       </div>
     </a>
     <div class="right">

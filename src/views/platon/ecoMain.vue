@@ -6,17 +6,17 @@
     </nav>
     <div class="showcase">
       <h3>Атроф мухитимизни авлодлар учун биргаликда саклайлик</h3>
-      <h1>Давлат экологик экспертизадан утиш</h1>
+      <h1>Чиқиндиларни транспорт орқали ташиш</h1>
       <button>кабинетга кириш <i class="fa-regular fa-chevron-right"></i></button>
     </div>
     <div class="transition-stages">
       <p>Экологик экспертиза қандай амалга оширилади ?</p>
-      <h1>Davlat ekologik ekspertizasidan o'tkazish bosqichlari</h1>
+      <h1>MaxsusTrans xizmatlarisidan foydalanish  bosqichlari</h1>
       <div class="boxes">
         <div class="box">
           <div class="card bg1">
             <h3>Buyurtma Yuborish</h3>
-            <p>Davlat Ekologik Ekspertizadan o'tkazish jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
+            <p>MaxsusTrans xizmatlaridan foydalanish jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
               oshiriladi</p>
             <a href="http://localhost:5173/eco_xizmatlar?info=1">
               <p>Buyurtma Yuborish</p>
@@ -28,7 +28,7 @@
         <div class="box">
           <div class="card bg2">
             <h3>Shartnoma Tuzish</h3>
-            <p>Davlat Ekologik Ekspertizadan o'tkazish jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
+            <p>MaxsusTrans xizmatlaridan foydalanish jarayonida jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
               oshiriladi</p>
             <a href="http://localhost:5173/eco_xizmatlar?info=2">
               <p>Shartnoma Tuzish</p>
@@ -40,7 +40,7 @@
         <div class="box">
           <div class="card bg3">
             <h3>Xulosa Olish</h3>
-            <p>Davlat Ekologik Ekspertizadan o'tkazish jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
+            <p>MaxsusTrans xizmatlaridan foydalanish jarayonida jarayonida buyurtma yuborilgandan so'ng Shartnoma tuzish amalga
               oshiriladi</p>
             <a href="http://localhost:5173/eco_xizmatlar?info=3">
               <p>Xulosa Olish</p>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="environmental-expertise" @mousemove="fillBottle2">
-      <h1>Davlat ekologik ekspertizasidan o'tkaziladigan obyektlar</h1>
+      <h1>MaxsusTrans xizmatlaridan foydalanishgan obyektlar</h1>
       <swiper
           :cssMode="true"
           :slidesPerView="'auto'"
@@ -78,7 +78,7 @@
     </div>
     <div class="types-activities">
       <p>Қайси фаолият турлари экспертизадан ўтказилади ?</p>
-      <h1>Davlat ekologik ekspertizasidan o'tkaziladigan faoliyat turlari</h1>
+      <h1>MaxsusTrans xizmatlaridan foydalanishgan faoliyat turlari</h1>
       <div class="card">
         <div class="bar">
           <p>{{ activActivitie }}/{{ activitiesInfo.length }}</p>
@@ -99,7 +99,7 @@
       </div>
     </div>
     <div class="statistics-Applications">
-      <p>Экологик экспертизадан ўтказиш рақамларда</p>
+      <p>Tizimdan foydalanish raqamlarda</p>
       <div class="card">
         <div class="left">
           <div class="box">
