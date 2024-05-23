@@ -25,7 +25,7 @@
                 <td>Narxi</td>
             </tr>
             <tr v-for="(item, index) in services" :key="item.id">
-              <td width="36" style="border: 1px solid black"> {{item.id}} </td>
+              <td width="36" style="border: 1px solid black"> {{index+1}} </td>
               <td width="36" style="border: 1px solid black"> <a :href="`/pages/service?id=${item.id}`"> {{item.name}} </a> </td>
               <td width="36" style="border: 1px solid black"> {{item.unit}} </td>
               <td width="36" style="border: 1px solid black"> {{item.price}} </td>
