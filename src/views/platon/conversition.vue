@@ -109,9 +109,7 @@ export default {
                                 <h5>Ответ</h5>
                               </div>
                             </div>
-                            <p><figure class="easyimage easyimage-full"><img alt="" src="blob:http://maxsustrans.uz/857db274-8cfb-4ff5-9a52-cdb9ba93d627" width="580" />
-                              <figcaption></figcaption>
-                            </figure>
+                            <p>
 
                               <p>&nbsp; &nbsp; &nbsp;Услуги, предоставляемые Яккасарай-Максустранс АТФ</p>
 
