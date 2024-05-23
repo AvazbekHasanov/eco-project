@@ -5,6 +5,9 @@ import ecoServices from '../views/platon/ecoServises.vue'
 import contacts from '../views/platon/contacts.vue'
 import Login from '../views/Login.vue'
 import Service from '../views/platon/ecoService.vue'
+import Statistics from '../views/platon/statistics.vue'
+import News from '../views/platon/news.vue'
+import Conservation from '../views/platon/conversition.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +31,21 @@ const router = createRouter({
           path: 'service',
           name: 'service',
           component: Service
+        },
+        {
+          path: 'statistics',
+          name: 'statistics',
+          component: Statistics
+        },
+        {
+          path: 'news',
+          name: 'news',
+          component: News
+        },
+        {
+          path: 'conservation',
+          name: 'conservation',
+          component: Conservation
         },
         {
           path: 'contacts',

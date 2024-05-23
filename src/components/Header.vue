@@ -178,11 +178,11 @@ export default {
   <div class="bottom">
     <a href="/" exact>BOSH SAHIFA</a>
     <a href="/pages/services" exact>XIZMATLAR</a>
-    <a href="#" exact>YANGILIKLAR</a>
-    <a href="#">XULOSALAR</a>
-    <a href="#">LOYIHACHILAR REYTINGI</a>
-    <a href="#">JAMOATCHILIK ESHITUVI</a>
-    <a href="#">STATISTIKA</a>
+    <a href="/pages/news" exact>YANGILIKLAR</a>
+    <a href="/pages/conservation">Savol-Javoblar</a>
+    <a href="/pages/statistics">STATISTIKA</a>
+<!--    <a href="#">JAMOATCHILIK ESHITUVI</a>-->
+<!--    <a href="#">STATISTIKA</a>-->
     <a href="/pages/contacts">ALOQALAR</a>
   </div>
 </template>
